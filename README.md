@@ -14,4 +14,4 @@ A program I made show if you are pressing `W A S D`. It is intended for use with
 
 ![Image3](https://i.imgur.com/MPszMyi.png)
 
-[`SHIFT` and `CTRL` kews shown]
+[`SHIFT` and `CTRL` keys shown]
