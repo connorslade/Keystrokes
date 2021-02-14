@@ -1,19 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using Utilities;
 
 namespace Keystrokes
 {
     public partial class KeystrokesWindow : Form
     {
-        private globalKeyboardHook gkh = new globalKeyboardHook();
+        private Color Color1 = Color.FromArgb(255, 35, 35, 35);
+        private Color Color2 = Color.FromArgb(255, 60, 60, 60);
+        private readonly GlobalKeyboardHook Gkh = new GlobalKeyboardHook();
 
-        System.Windows.Forms.Keys[] keysToAdd = { Keys.W, Keys.A, Keys.S, Keys.D, Keys.Space, Keys.LShiftKey, Keys.LControlKey };
-
-        private System.Drawing.Color color1 = Color.FromArgb(255, 35, 35, 35);
-        private System.Drawing.Color color2 = Color.FromArgb(255, 60, 60, 60);
+        private readonly Keys[] KeysToAdd = {Keys.W, Keys.A, Keys.S, Keys.D, Keys.Space, Keys.LShiftKey, Keys.LControlKey};
 
         public KeystrokesWindow()
         {
@@ -22,78 +19,76 @@ namespace Keystrokes
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            foreach (System.Windows.Forms.Keys addKey in keysToAdd)
-            {
-                gkh.HookedKeys.Add(addKey);
-            }
-            gkh.KeyDown += new KeyEventHandler(gkh_KeyDown);
-            gkh.KeyUp += new KeyEventHandler(gkh_KeyUp);
+            foreach (var AddKey in KeysToAdd)
+                Gkh.HookedKeys.Add(AddKey);
+            Gkh.KeyDown += gkh_KeyDown;
+            Gkh.KeyUp += gkh_KeyUp;
         }
 
         private void gkh_KeyUp(object sender, KeyEventArgs e)
         {
-            debugText.Text = e.KeyCode.ToString() + " UP";
+            debugText.Text = e.KeyCode + @" UP";
             switch (e.KeyCode.ToString())
             {
                 case "W":
-                    panel1.BackColor = color2;
+                    panel1.BackColor = Color2;
                     break;
                 case "A":
-                    panel4.BackColor = color2;
+                    panel4.BackColor = Color2;
                     break;
                 case "S":
-                    panel3.BackColor = color2;
+                    panel3.BackColor = Color2;
                     break;
                 case "D":
-                    panel2.BackColor = color2;
+                    panel2.BackColor = Color2;
                     break;
                 case "Space":
-                    panel5.BackColor = color2;
+                    panel5.BackColor = Color2;
                     break;
                 case "LShiftKey":
-                    panel6.BackColor = color2;
+                    panel6.BackColor = Color2;
                     break;
                 case "LControlKey":
-                    panel7.BackColor = color2;
+                    panel7.BackColor = Color2;
                     break;
             }
         }
 
         private void gkh_KeyDown(object sender, KeyEventArgs e)
         {
-            debugText.Text = e.KeyCode.ToString() + " DOWN";
+            debugText.Text = e.KeyCode + @" DOWN";
             switch (e.KeyCode.ToString())
             {
                 case "W":
-                    panel1.BackColor = color1;
+                    panel1.BackColor = Color1;
                     break;
                 case "A":
-                    panel4.BackColor = color1;
+                    panel4.BackColor = Color1;
                     break;
                 case "S":
-                    panel3.BackColor = color1;
+                    panel3.BackColor = Color1;
                     break;
                 case "D":
-                    panel2.BackColor = color1;
+                    panel2.BackColor = Color1;
                     break;
                 case "Space":
-                    panel5.BackColor = color1;
+                    panel5.BackColor = Color1;
                     break;
                 case "LShiftKey":
-                    panel6.BackColor = color1;
+                    panel6.BackColor = Color1;
                     break;
                 case "LControlKey":
-                    panel7.BackColor = color1;
+                    panel7.BackColor = Color1;
                     break;
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Button btnSender = (Button)sender;
-            Point ptLowerLeft = new Point(0, btnSender.Height);
-            ptLowerLeft = btnSender.PointToScreen(ptLowerLeft);
-            contextMenuStrip1.Show(ptLowerLeft);
+            var BtnSender = (Button) sender;
+            var PtLowerLeft = new Point(0, BtnSender.Height);
+            PtLowerLeft = BtnSender.PointToScreen(PtLowerLeft);
+            contextMenuStrip1.Show(PtLowerLeft);
         }
 
         private void onTopToolStripMenuItem_Click(object sender, EventArgs e)
@@ -101,12 +96,12 @@ namespace Keystrokes
             if (onTopToolStripMenuItem.Checked)
             {
                 onTopToolStripMenuItem.Checked = false;
-                this.TopMost = false;
+                TopMost = false;
             }
             else
             {
                 onTopToolStripMenuItem.Checked = true;
-                this.TopMost = true;
+                TopMost = true;
             }
         }
 
@@ -129,7 +124,8 @@ namespace Keystrokes
             if (darkModeToolStripMenuItem.Checked)
             {
                 darkModeToolStripMenuItem.Checked = false;
-                KeystrokesWindow.ActiveForm.BackColor = Color.FromArgb(255, 240, 240, 240);
+                if (ActiveForm != null)
+                    ActiveForm.BackColor = Color.FromArgb(255, 240, 240, 240);
                 panel1.BackColor = Color.FromArgb(255, 190, 190, 190);
                 panel2.BackColor = Color.FromArgb(255, 190, 190, 190);
                 panel3.BackColor = Color.FromArgb(255, 190, 190, 190);
@@ -142,13 +138,14 @@ namespace Keystrokes
                 label4.ForeColor = Color.FromArgb(255, 0, 0, 0);
                 label5.ForeColor = Color.FromArgb(255, 0, 0, 0);
 
-                color1 = Color.FromArgb(255, 150, 150, 150);
-                color2 = Color.FromArgb(255, 190, 190, 190);
-    }
+                Color1 = Color.FromArgb(255, 150, 150, 150);
+                Color2 = Color.FromArgb(255, 190, 190, 190);
+            }
             else
             {
                 darkModeToolStripMenuItem.Checked = true;
-                KeystrokesWindow.ActiveForm.BackColor = Color.FromArgb(255, 17, 17, 17);
+                if (ActiveForm != null)
+                    ActiveForm.BackColor = Color.FromArgb(255, 17, 17, 17);
                 panel1.BackColor = Color.FromArgb(255, 50, 50, 50);
                 panel2.BackColor = Color.FromArgb(255, 50, 50, 50);
                 panel3.BackColor = Color.FromArgb(255, 50, 50, 50);
@@ -161,15 +158,15 @@ namespace Keystrokes
                 label4.ForeColor = Color.FromArgb(255, 255, 255, 255);
                 label5.ForeColor = Color.FromArgb(255, 255, 255, 255);
 
-                color1 = Color.FromArgb(255, 35, 35, 35);
-                color2 = Color.FromArgb(255, 60, 60, 60);
+                Color1 = Color.FromArgb(255, 35, 35, 35);
+                Color2 = Color.FromArgb(255, 60, 60, 60);
             }
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            Credits credits = new Credits();
-            credits.Show();
+            var Credits = new Credits();
+            Credits.Show();
         }
 
         private void shiftToolStripMenuItem_Click(object sender, EventArgs e)
@@ -210,12 +207,14 @@ namespace Keystrokes
             if (showTitleBarToolStripMenuItem.Checked)
             {
                 showTitleBarToolStripMenuItem.Checked = false;
-            KeystrokesWindow.ActiveForm.FormBorderStyle = FormBorderStyle.None;
+                if (ActiveForm != null)
+                    ActiveForm.FormBorderStyle = FormBorderStyle.None;
             }
             else
             {
                 showTitleBarToolStripMenuItem.Checked = true;
-            KeystrokesWindow.ActiveForm.FormBorderStyle = FormBorderStyle.FixedDialog;
+                if (ActiveForm != null)
+                    ActiveForm.FormBorderStyle = FormBorderStyle.FixedDialog;
             }
         }
     }

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Keystrokes
@@ -20,7 +13,7 @@ namespace Keystrokes
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("http://coolthing.connorcode.com/");
-            MessageBox.Show("ヾ(≧▽≦*)", "Gottem");
+            MessageBox.Show(@"ヾ(≧▽≦*)", @"Gottem");
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -35,7 +28,7 @@ namespace Keystrokes
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }
