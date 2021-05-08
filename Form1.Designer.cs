@@ -40,8 +40,8 @@ namespace Keystrokes
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
             this.debugText = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,6 +57,7 @@ namespace Keystrokes
             this.label6 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
+            this.transparentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -170,6 +171,17 @@ namespace Keystrokes
             this.panel5.Size = new System.Drawing.Size(312, 100);
             this.panel5.TabIndex = 1;
             // 
+            // debugText
+            // 
+            this.debugText.AutoSize = true;
+            this.debugText.ForeColor = System.Drawing.Color.White;
+            this.debugText.Location = new System.Drawing.Point(2, 83);
+            this.debugText.Name = "debugText";
+            this.debugText.Size = new System.Drawing.Size(37, 13);
+            this.debugText.TabIndex = 2;
+            this.debugText.Text = "debug";
+            this.debugText.Visible = false;
+            // 
             // label5
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -182,17 +194,6 @@ namespace Keystrokes
             this.label5.TabIndex = 2;
             this.label5.Text = "SPACE";
             this.label5.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // debugText
-            // 
-            this.debugText.AutoSize = true;
-            this.debugText.ForeColor = System.Drawing.Color.White;
-            this.debugText.Location = new System.Drawing.Point(2, 83);
-            this.debugText.Name = "debugText";
-            this.debugText.Size = new System.Drawing.Size(37, 13);
-            this.debugText.TabIndex = 2;
-            this.debugText.Text = "debug";
-            this.debugText.Visible = false;
             // 
             // button1
             // 
@@ -213,10 +214,11 @@ namespace Keystrokes
             this.onTopToolStripMenuItem,
             this.showTitleBarToolStripMenuItem,
             this.extraButtonsToolStripMenuItem,
+            this.transparentToolStripMenuItem,
             this.debugToolStripMenuItem,
             this.quitToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(145, 158);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(145, 180);
             // 
             // toolStripMenuItem2
             // 
@@ -335,6 +337,13 @@ namespace Keystrokes
             this.label7.Text = "✲";
             this.label7.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
+            // transparentToolStripMenuItem
+            // 
+            this.transparentToolStripMenuItem.Name = "transparentToolStripMenuItem";
+            this.transparentToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.transparentToolStripMenuItem.Text = "Transparent";
+            this.transparentToolStripMenuItem.Click += new System.EventHandler(this.transparentToolStripMenuItem_Click);
+            // 
             // KeystrokesWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -353,7 +362,7 @@ namespace Keystrokes
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "KeystrokesWindow";
-            this.Text = "Keystrokes";
+            this.Text = "Keystrokes (BETA)";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -402,6 +411,7 @@ namespace Keystrokes
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showTitleBarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem transparentToolStripMenuItem;
     }
 }
 

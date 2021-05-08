@@ -119,7 +119,7 @@ namespace Keystrokes
             }
         }
 
-        private void darkModeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void UpdateColors()
         {
             if (darkModeToolStripMenuItem.Checked)
             {
@@ -161,6 +161,11 @@ namespace Keystrokes
                 Color1 = Color.FromArgb(255, 35, 35, 35);
                 Color2 = Color.FromArgb(255, 60, 60, 60);
             }
+        }
+
+        private void darkModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UpdateColors();
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
@@ -215,6 +220,22 @@ namespace Keystrokes
                 showTitleBarToolStripMenuItem.Checked = true;
                 if (ActiveForm != null)
                     ActiveForm.FormBorderStyle = FormBorderStyle.FixedDialog;
+            }
+        }
+
+        private void transparentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            transparentToolStripMenuItem.Checked = !transparentToolStripMenuItem.Checked;
+            if (transparentToolStripMenuItem.Checked)
+            {
+                this.BackColor = Color.FromArgb(1, 1, 1);
+                this.TransparencyKey = Color.FromArgb(1, 1, 1);
+                this.AllowTransparency = true;
+            }
+            else
+            {
+                UpdateColors();
+                this.AllowTransparency = false;
             }
         }
     }
